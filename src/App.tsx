@@ -1,8 +1,9 @@
 import { useState } from "react"
+import { useAppContext } from "./context/hook"
 
 export default function App() {
+  const { state, addNewTask } = useAppContext()
   const [inputValue, setInputValue] = useState("")
-  const [listTasks, setListTasks] = useState<Array<string>>([])
   return (
     <div>
       <input
@@ -11,14 +12,14 @@ export default function App() {
       />
       <button
         onClick={() => {
-          setListTasks([inputValue, ...listTasks])
+          addNewTask(inputValue)
           setInputValue("")
         }}
       >
         add task
       </button>
       {
-        listTasks.map((task, index) => <p key={index}>{task}</p>)
+        state.tasks.map((task, index) => <p key={index}>{`${task.title} - ${task.isCompleted}`}</p>)
       }
     </div>
   )
