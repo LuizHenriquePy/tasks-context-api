@@ -11,7 +11,6 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [state, dispatch] = useReducer(AppContextReducer, INITIAL_STATE)
 
   const addNewTask = (title: string) => {
-    console.log('ADAFD: ')
     dispatch({
       type: EAppContextActions.addTask,
       payload: { title, isCompleted: false }

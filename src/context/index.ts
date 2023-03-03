@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ITasks } from "../interfaces/ITasks";
+import { ITasks } from "../interfaces/ITask";
 
 export const INITIAL_STATE = {
   tasks: [] as ITasks[]

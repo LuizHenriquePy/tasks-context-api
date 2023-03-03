@@ -1,6 +1,7 @@
 import { initialStateTypes, INITIAL_STATE } from '.'
 import { EAppContextActions } from '../enums/EAppContextActions';
 import { IDispatchAction } from '../interfaces/IDispatchAction';
+import { v4 as uuid } from 'uuid'
 
 export const AppContextReducer = (
   state = INITIAL_STATE,
@@ -9,7 +10,7 @@ export const AppContextReducer = (
     case EAppContextActions.addTask:
       return {
         ...state,
-        tasks: [{ ...action.payload }, ...state.tasks]
+        tasks: [{ ...action.payload, id: uuid() }, ...state.tasks]
       }
     default:
       return state;
