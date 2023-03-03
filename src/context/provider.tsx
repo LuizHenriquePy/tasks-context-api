@@ -17,11 +17,19 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     })
   }
 
+  const deleteTask = (id: string) => {
+    dispatch({
+      type: EAppContextActions.deleteTask,
+      payload: state.tasks.filter((task) => task.id !== id)
+    })
+  }
+
   return (
     <AppContext.Provider
       value={{
         state,
-        addNewTask
+        addNewTask,
+        deleteTask
       }}
     >
       {children}

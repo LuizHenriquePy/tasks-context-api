@@ -5,7 +5,6 @@ import { useAppContext } from "./context/hook"
 export default function App() {
   const { state, addNewTask } = useAppContext()
   const [inputValue, setInputValue] = useState("")
-  console.log(state.tasks)
   return (
     <div>
       <input
@@ -24,7 +23,8 @@ export default function App() {
         state.tasks.map((task, index) => <Task
           key={index}
           title={task.title}
-          isCompleted={task.isCompleted} />)
+          isCompleted={task.isCompleted}
+          id={task.id} />)
       }
     </div>
   )

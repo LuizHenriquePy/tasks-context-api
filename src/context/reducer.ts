@@ -12,6 +12,11 @@ export const AppContextReducer = (
         ...state,
         tasks: [{ ...action.payload, id: uuid() }, ...state.tasks]
       }
+    case EAppContextActions.deleteTask:
+      return {
+        ...state,
+        tasks: action.payload
+      }
     default:
       return state;
   }
