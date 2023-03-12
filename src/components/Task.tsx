@@ -10,12 +10,13 @@ export default function Task({ title, isCompleted, id }: ITask) {
   const [isEditing, setIsEditing] = useState<boolean>(false)
 
   return (
-    <div className="flex justify-between items-center w-full h-10 border border-black">
+    <div className="flex justify-between items-center w-full min-h-10 bg-slate-300 rounded-xl py-4 my-2">
       {
         isEditing ? <TaskEditing title={title} id={id as string} setIsEditing={setIsEditing} />
           : <ShowingTask isCompleted={isCompleted} title={title} setIsEditing={setIsEditing} />
       }
       <button
+        className="mr-7"
         onClick={() => deleteTask(id as string)}
         title="delete"
       ><Trash color="red" /></button>

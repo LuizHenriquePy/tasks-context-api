@@ -8,10 +8,15 @@ interface ShowingTask {
 
 export default function ShowingTask(props: ShowingTask) {
   return (
-    <div className="flex justify-between items-center w-full">
-      <input type="checkbox" checked={props.isCompleted} />
-      <h1>{props.title}</h1>
+    <div className="flex justify-between items-center w-full mx-3">
+      <input
+        className="mr-5 ml-2 scale-125"
+        type="checkbox"
+        checked={props.isCompleted}
+      />
+      <h1 className="w-full text-justify">{props.title}</h1>
       <button
+        className="mr-2 ml-3"
         title="edit"
         onClick={() => props.setIsEditing(true)}
       >

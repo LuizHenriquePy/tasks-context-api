@@ -4,6 +4,7 @@ import { useState } from "react"
 export default function InputAddTask() {
   const { addNewTask } = useAppContext()
   const [inputValue, setInputValue] = useState("")
+
   return (
     <div className="w-full flex justify-center py-8">
       <input
@@ -18,7 +19,7 @@ export default function InputAddTask() {
           setInputValue("")
         }}
       >
-        add task
+        Add Task
       </button>
     </div>
   )
