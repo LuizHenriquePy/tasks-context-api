@@ -10,5 +10,6 @@ export type initialStateTypes = typeof INITIAL_STATE
 export const AppContext = createContext({
   state: INITIAL_STATE,
   addNewTask: (task: string) => { },
-  deleteTask: (id: string) => { }
+  deleteTask: (id: string) => { },
+  changeTask: (id: string) => { }
 })

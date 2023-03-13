@@ -1,7 +1,8 @@
-import { ReactNode, useCallback, useReducer } from "react"
+import { ReactNode, useReducer } from "react"
 import { AppContext, INITIAL_STATE } from "."
 import { EAppContextActions } from "../enums/EAppContextActions"
 import { AppContextReducer } from "./reducer"
+import { v4 as uuid } from 'uuid'
 
 type AppContextProviderProps = {
   children: ReactNode
@@ -13,7 +14,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const addNewTask = (title: string) => {
     dispatch({
       type: EAppContextActions.addTask,
-      payload: { title, isCompleted: false }
+      payload: [{ title, isCompleted: false, id: uuid() }, ...state.tasks]
     })
   }
 
@@ -24,12 +25,25 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     })
   }
 
+  const changeTask = (id: string) => {
+    dispatch({
+      type: EAppContextActions.changeTask,
+      payload: state.tasks.map((task) => {
+        if (task.id === id) {
+          task.isCompleted = !task.isCompleted
+        }
+        return task
+      })
+    })
+  }
+
   return (
     <AppContext.Provider
       value={{
         state,
         addNewTask,
-        deleteTask
+        deleteTask,
+        changeTask
       }}
     >
       {children}

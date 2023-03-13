@@ -18,7 +18,7 @@ export default function TaskEditing(props: TaskEditingProps) {
           props.setIsEditing(false)
         }}
       >
-        <FloppyDiskBack />
+        <FloppyDiskBack size={20} />
       </button>
     </div>
   )
