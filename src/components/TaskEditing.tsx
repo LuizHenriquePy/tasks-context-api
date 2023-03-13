@@ -1,4 +1,6 @@
 import { FloppyDiskBack } from '@phosphor-icons/react'
+import { useState } from 'react'
+import { useAppContext } from '../context/hook'
 
 interface TaskEditingProps {
   setIsEditing: (state: boolean) => void
@@ -7,14 +9,17 @@ interface TaskEditingProps {
 }
 
 export default function TaskEditing(props: TaskEditingProps) {
+  const [input, setInput] = useState(props.title)
+  const { editTask } = useAppContext()
+
   return (
     <div className="flex justify-between items-center w-full mx-3">
-      <textarea value={props.title} className="w-full rounded-xl p-3 h-auto"></textarea>
+      <textarea value={input} onChange={(e) => setInput(e.target.value)} className="w-full rounded-xl p-3 h-auto"></textarea>
       <button
         className="p-2"
         title="save"
         onClick={() => {
-          // function to change task name
+          editTask(props.id, input)
           props.setIsEditing(false)
         }}
       >

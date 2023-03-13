@@ -37,13 +37,26 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     })
   }
 
+  const editTask = (id: string, title: string) => {
+    dispatch({
+      type: EAppContextActions.editTask,
+      payload: state.tasks.map((task) => {
+        if (task.id === id) {
+          task.title = title
+        }
+        return task
+      })
+    })
+  }
+
   return (
     <AppContext.Provider
       value={{
         state,
         addNewTask,
         deleteTask,
-        changeTask
+        changeTask,
+        editTask
       }}
     >
       {children}

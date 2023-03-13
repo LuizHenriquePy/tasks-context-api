@@ -9,6 +9,7 @@ export const AppContextReducer = (
     case EAppContextActions.addTask:
     case EAppContextActions.deleteTask:
     case EAppContextActions.changeTask:
+    case EAppContextActions.editTask:
       return {
         ...state,
         tasks: action.payload
