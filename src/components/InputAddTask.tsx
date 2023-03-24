@@ -11,6 +11,7 @@ export default function InputAddTask() {
         value={inputValue}
         className="border border-black rounded-l-xl px-2 h-8 w-4/5 xl:w-1/2 lg:w-9/12"
         onChange={({ target }) => setInputValue(target.value)}
+        placeholder="enter your task"
       />
       <button
         className="border border-black rounded-r-xl w-20 h-8"
