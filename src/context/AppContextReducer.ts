@@ -1,6 +1,10 @@
 import { initialStateTypes, INITIAL_STATE } from '.'
 import { EAppContextActions } from '../enums/EAppContextActions';
-import { IDispatchAction } from '../interfaces/IDispatchAction';
+
+export interface IDispatchAction {
+  type: EAppContextActions,
+  payload?: any
+}
 
 export const AppContextReducer = (
   state = INITIAL_STATE,

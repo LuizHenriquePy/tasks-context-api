@@ -1,7 +1,7 @@
 import { ReactNode, useReducer } from "react"
 import { AppContext, INITIAL_STATE } from "."
 import { EAppContextActions } from "../enums/EAppContextActions"
-import { AppContextReducer } from "./reducer"
+import { AppContextReducer } from "./AppContextReducer"
 import { v4 as uuid } from 'uuid'
 
 type AppContextProviderProps = {

@@ -1,4 +1,4 @@
-import { useAppContext } from "../context/hook"
+import { useAppContext } from "../context/useAppContext"
 import { ITask } from "../interfaces/ITask"
 import { Trash } from '@phosphor-icons/react'
 import { useState } from "react"

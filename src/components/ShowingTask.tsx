@@ -1,5 +1,5 @@
 import { Pencil } from '@phosphor-icons/react'
-import { useAppContext } from '../context/hook'
+import { useAppContext } from '../context/useAppContext'
 
 interface ShowingTask {
   setIsEditing: (state: boolean) => void

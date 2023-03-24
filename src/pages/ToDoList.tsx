@@ -1,6 +1,6 @@
 import Task from "../components/Task"
 import InputAddTask from '../components/InputAddTask'
-import { useAppContext } from "../context/hook"
+import { useAppContext } from "../context/useAppContext"
 
 export default function ToDoList() {
   const { state } = useAppContext()
