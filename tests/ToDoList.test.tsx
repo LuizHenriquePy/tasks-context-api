@@ -35,4 +35,27 @@ describe('Page ToDoList', () => {
 
     expect(screen.queryAllByTestId('tasks').length).toEqual(2)
   })
+  it('Testa se é possível editar uma task', async () => {
+    const user = userEvent.setup()
+    render(<AppContextProvider><ToDoList /></AppContextProvider>)
+
+    const inputAddTask = screen.getByRole('textbox')
+    const buttonAddTask = screen.getByRole('button', { name: /add task/i })
+    const text = 'texto para testar a tarefa'
+    await user.type(inputAddTask, text)
+    await user.click(buttonAddTask)
+
+    const buttonEditTask = screen.queryAllByTestId('button-edit-task')
+    await user.click(buttonEditTask[0])
+
+    const buttonEditSave = screen.getByTestId('button-edit-save')
+    const inputEditTask = screen.getByTestId('input-edit-task')
+    await user.type(inputEditTask, 'test')
+    await user.click(buttonEditSave)
+
+    const task = screen.getByRole('heading', { name: text + 'test' })
+
+    expect(task).toBeInTheDocument()
+    expect(task).toBeVisible()
+  })
 })

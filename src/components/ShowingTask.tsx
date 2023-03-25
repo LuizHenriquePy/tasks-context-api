@@ -22,6 +22,7 @@ export default function ShowingTask(props: ShowingTask) {
       <button
         className="mr-2 ml-3"
         title="edit"
+        data-testid="button-edit-task"
         onClick={() => props.setIsEditing(true)}
       >
         <Pencil size={20} />
