@@ -23,4 +23,16 @@ describe('Page ToDoList', () => {
     expect(task).toBeVisible()
     expect(task).toBeInTheDocument()
   })
+  it('Testa se é possível deletar uma task', async () => {
+    const user = userEvent.setup()
+    render(<AppContextProvider><ToDoList /></AppContextProvider>)
+    const buttonDeleteTask = screen.queryAllByTestId('button-delete-task')
+    const taskList = screen.queryAllByTestId('tasks')
+
+    expect(taskList.length).toEqual(3)
+
+    await user.click(buttonDeleteTask[0])
+
+    expect(screen.queryAllByTestId('tasks').length).toEqual(2)
+  })
 })
