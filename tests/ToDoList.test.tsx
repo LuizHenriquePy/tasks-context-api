@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react"
 import ToDoList from '../src/pages/ToDoList'
 import userEvent from '@testing-library/user-event'
 import { AppContextProvider } from '../src/context/AppContextProvider'
+import { useAppContext } from "../src/context/useAppContext"
 
 
 describe('Page ToDoList', () => {
@@ -57,5 +58,22 @@ describe('Page ToDoList', () => {
 
     expect(task).toBeInTheDocument()
     expect(task).toBeVisible()
+  })
+  it('Testa se é possível marcar e desmarcar uma task como concluída', async () => {
+    const user = userEvent.setup()
+    render(<AppContextProvider><ToDoList /></AppContextProvider>)
+
+    const checkboxCompletedTask = screen.queryAllByTestId('checkbox')
+    await user.click(checkboxCompletedTask[0])
+
+    const checkboxChecked = screen.getByRole('checkbox', { checked: true })
+
+    expect(checkboxChecked).toBeInTheDocument()
+    expect(checkboxChecked).toBeVisible()
+
+    await user.click(checkboxChecked)
+
+    const isExistCheckboxChecked = screen.queryByRole('checkbox', { checked: true })
+    expect(isExistCheckboxChecked).toBe(null)
   })
 })

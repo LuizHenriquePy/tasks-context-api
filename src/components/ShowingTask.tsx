@@ -16,6 +16,7 @@ export default function ShowingTask(props: ShowingTask) {
         className="mr-5 ml-2 scale-125"
         type="checkbox"
         checked={props.isCompleted}
+        datd-testid="checkbox-completed-task"
         onChange={() => changeTask(props.id)}
       />
       <h1 className={`w-full text-justify ${props.isCompleted ? "line-through" : ""}`}>{props.title}</h1>
