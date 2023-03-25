@@ -15,6 +15,7 @@ Este projeto é um simples site para gerenciar tarefas. A motivação para a cri
 - Vitest
 - RTL
 - uuid
+- Tailwind CSS
 
 ## Como executar o projeto:
 Acesse o link para o deploy: https://tasks-context-api.vercel.app/
